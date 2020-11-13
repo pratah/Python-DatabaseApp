@@ -69,6 +69,22 @@ def insert_records():
 	conn.close()
 
 
+def add_many(list):
+	# Establishing a connection and create DB
+	conn = sqlite3.connect('customer.db')
+
+	# Creating a cursor
+	c = conn.cursor()
+
+	c.executemany("INSERT INTO customers VALUES (?,?,?)", list)
+
+	# Commiting changes made
+	conn.commit()
+
+	# Closing our connection
+	conn.close()
+
+
 
 
 # This functin will query the database and return all records
@@ -95,7 +111,22 @@ def show_records():
 
 
 
-def del_record():
+def del_record(id):
+	# Establishing a connection and create DB
+	conn = sqlite3.connect('customer.db')
+
+	# Creating a cursor
+	c = conn.cursor()
+
+	# Querying
+	c.execute("DELETE FROM customers WHERE rowid = (?)", id)
+
+	# Commiting changes made
+	conn.commit()
+
+	# Closing our connection
+	conn.close()
+
 
 
 

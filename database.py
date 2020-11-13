@@ -6,6 +6,23 @@ os.system('clear')
 # Importing sqlite3 module
 import sqlite3
 
+
+def add_one(first_name,last_name,email):
+	# Establishing a connection and create DB
+	conn = sqlite3.connect('customer.db')
+
+	# Creating a cursor
+	c = conn.cursor()
+
+	c.execute("INSERT INTO customers VALUES (?,?,?)", (first_name,last_name,email) )
+
+	# Commiting changes made
+	conn.commit()
+
+	# Closing our connection
+	conn.close() 
+
+
 def create_table():
 	# Establishing a connection and create DB
 	conn = sqlite3.connect('customer.db')
@@ -78,7 +95,7 @@ def show_records():
 
 
 
-
+def del_record():
 
 
 
